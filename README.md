@@ -46,7 +46,7 @@ Quantos pentes de memória RAM foram adquiridos? 2
 Digite o modelo da memória RAM 1: Kingston Fury 8GB
 Digite o modelo da memória RAM 2: Corsair Vengeance 8GB
 ...
-Digite os custos extras (ou deixe vazio se não houver): Garantia estendida
+Digite os custos extras (ou deixe vazio se não houver): Custos com Cabos, destaque em alguma ferramenta de venda como OLX ou ML (Mercado Livre), entre outros.
 Digite o valor dos custos extras: 50.00
 ...
 
