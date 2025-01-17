@@ -1,18 +1,35 @@
-## Getting Started
+# Aplicativo de Cálculo de Lucro em Hardware
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este é um aplicativo em Java que permite calcular o lucro e o percentual de lucro obtido a partir da venda de uma configuração de hardware. Ele solicita informações detalhadas sobre os componentes e seus custos, realiza os cálculos necessários e exibe os resultados.
 
-## Folder Structure
+## Funcionamento
 
-The workspace contains two folders by default, where:
+### 1. Entrada de Dados
+- O programa solicita ao usuário os modelos dos componentes do computador, incluindo:
+  - Placa Mãe
+  - Fonte
+  - Processador
+  - Gabinete
+  - HD
+  - Cooler
+  - Placa de Vídeo
+  - Memória RAM
+  - SSD
+  - Custos extras (opcional)
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Em seguida, o programa solicita os valores pagos por cada componente.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### 2. Cálculo
+O programa realiza os seguintes cálculos:
+- **Total Investido**: Soma de todos os valores pagos pelos componentes e custos extras.
+- **Lucro Total**: Diferença entre o valor de venda e o total investido.
+- **Percentual de Lucro**: Representação percentual do lucro em relação ao total investido.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### 3. Saída de Dados
+O programa exibe:
+- Modelos de todos os componentes fornecidos.
+- Custos extras (se houver).
+- Total investido.
+- Valor de venda.
+- Lucro total.
+- Percentual de lucro.
