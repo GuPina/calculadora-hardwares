@@ -26,14 +26,29 @@ public class App {
         System.out.print("Digite o modelo da placa de vídeo: ");
         String placaDeVideo = scanner.nextLine();
 
-        System.out.print("Digite o modelo da memória RAM: ");
-        String memoriaRam = scanner.nextLine();
+        // Solicitar informações da memória RAM
+        System.out.print("Quantos pentes de memória RAM foram adquiridos? ");
+        int quantidadeMemoriaRam = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha
+        String[] modelosMemoriaRam = new String[quantidadeMemoriaRam];
+        for (int i = 0; i < quantidadeMemoriaRam; i++) {
+            System.out.print("Digite o modelo da memória RAM " + (i + 1) + ": ");
+            modelosMemoriaRam[i] = scanner.nextLine();
+        }
 
         System.out.print("Digite o modelo do SSD: ");
         String ssd = scanner.nextLine();
 
-        System.out.print("Digite os custos extras: ");
+        // Solicitar custos extras
+        System.out.print("Digite os custos extras (ou deixe vazio se não houver): ");
         String custosExtras = scanner.nextLine();
+        double valorCustosExtras = 0.0;
+        if (!custosExtras.isBlank()) {
+            System.out.print("Digite o valor dos custos extras: ");
+            valorCustosExtras = scanner.nextDouble();
+        } else {
+            custosExtras = "Sem custo adicional";
+        }
 
         // Solicitar valores pagos em cada item
         System.out.print("Digite o valor pago na placa mãe: ");
@@ -57,17 +72,15 @@ public class App {
         System.out.print("Digite o valor pago na placa de vídeo: ");
         double valorPlacaDeVideo = scanner.nextDouble();
 
-        System.out.print("Digite o valor pago na memória RAM: ");
-        double valorMemoriaRam = scanner.nextDouble();
+        System.out.print("Digite o valor total pago pelas memórias RAM: ");
+        double valorTotalMemoriaRam = scanner.nextDouble();
 
         System.out.print("Digite o valor pago no SSD: ");
         double valorSsd = scanner.nextDouble();
 
-        System.out.print("Digite o valor dos custos extras: ");
-        double valorCustosExtras = scanner.nextDouble();
-
         // Calcular o total investido
-        double totalInvestido = valorPlacaMae + valorFonte + valorProcessador + valorGabinete + valorHd + valorCooler + valorPlacaDeVideo + valorMemoriaRam + valorSsd + valorCustosExtras;
+        double totalInvestido = valorPlacaMae + valorFonte + valorProcessador + valorGabinete + valorHd
+                + valorCooler + valorPlacaDeVideo + valorTotalMemoriaRam + valorSsd + valorCustosExtras;
 
         // Solicitar valor de venda
         System.out.print("Digite o valor de venda: ");
@@ -86,14 +99,16 @@ public class App {
         System.out.println("HD: " + hd);
         System.out.println("Cooler: " + cooler);
         System.out.println("Placa de Vídeo: " + placaDeVideo);
-        System.out.println("Memória RAM: " + memoriaRam);
+        for (int i = 0; i < quantidadeMemoriaRam; i++) {
+            System.out.println("Memória RAM " + (i + 1) + ": " + modelosMemoriaRam[i]);
+        }
         System.out.println("SSD: " + ssd);
         System.out.println("Custos Extras: " + custosExtras);
 
         System.out.println("\nTotal Investido: R$ " + totalInvestido);
         System.out.println("Valor de Venda: R$ " + valorVenda);
-        System.out.println("Lucro Total: R$ " + lucroTotal);
-        System.out.println("Percentual de Lucro: " + percentualLucro + "%");
+        System.out.printf("Lucro Total: R$ %.2f\n", lucroTotal);
+        System.out.printf("Percentual de Lucro: %.2f%%\n", percentualLucro);
 
         scanner.close();
     }
