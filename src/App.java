@@ -40,14 +40,19 @@ public class App {
         String ssd = scanner.nextLine();
 
         // Solicitar custos extras
-        System.out.print("Digite os custos extras (ou deixe vazio se não houver): ");
-        String custosExtras = scanner.nextLine();
-        double valorCustosExtras = 0.0;
-        if (!custosExtras.isBlank()) {
-            System.out.print("Digite o valor dos custos extras: ");
-            valorCustosExtras = scanner.nextDouble();
-        } else {
-            custosExtras = "Sem custo adicional";
+        System.out.print("Quantos custos extras você deseja adicionar? ");
+        int quantidadeCustosExtras = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha
+        String[] nomesCustosExtras = new String[quantidadeCustosExtras];
+        double[] valoresCustosExtras = new double[quantidadeCustosExtras];
+
+        for (int i = 0; i < quantidadeCustosExtras; i++) {
+            System.out.print("Digite o nome do custo extra " + (i + 1) + ": ");
+            nomesCustosExtras[i] = scanner.nextLine();
+
+            System.out.print("Digite o valor do custo extra " + (i + 1) + ": ");
+            valoresCustosExtras[i] = scanner.nextDouble();
+            scanner.nextLine(); // Consumir a quebra de linha
         }
 
         // Solicitar valores pagos em cada item
@@ -79,6 +84,11 @@ public class App {
         double valorSsd = scanner.nextDouble();
 
         // Calcular o total investido
+        double valorCustosExtras = 0.0;
+        for (double valor : valoresCustosExtras) {
+            valorCustosExtras += valor;
+        }
+
         double totalInvestido = valorPlacaMae + valorFonte + valorProcessador + valorGabinete + valorHd
                 + valorCooler + valorPlacaDeVideo + valorTotalMemoriaRam + valorSsd + valorCustosExtras;
 
@@ -113,7 +123,11 @@ public class App {
             System.out.println("Memória RAM " + (i + 1) + ": " + modelosMemoriaRam[i]);
         }
         System.out.println("SSD: " + ssd);
-        System.out.println("Custos Extras: " + custosExtras);
+
+        System.out.println("\nCustos Extras:");
+        for (int i = 0; i < quantidadeCustosExtras; i++) {
+            System.out.printf("%s: R$ %.2f\n", nomesCustosExtras[i], valoresCustosExtras[i]);
+        }
 
         System.out.printf("\nTotal Investido: R$ %.2f\n", totalInvestido);
         System.out.printf("Valor de Venda: R$ %.2f\n", valorVenda);
