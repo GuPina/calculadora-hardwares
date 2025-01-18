@@ -1,8 +1,12 @@
 import java.util.Scanner;
+import java.util.UUID;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // Geração de um ID único para o computador
+        String idComputador = UUID.randomUUID().toString();
 
         // Solicitar nomes dos modelos
         System.out.print("Digite o modelo da placa mãe: ");
@@ -110,8 +114,13 @@ public class App {
         double lucroTotal = valorVenda - totalInvestido;
         double percentualLucro = (lucroTotal / totalInvestido) * 100;
 
+        // Gerar nome fantasia para o computador
+        String nomeFantasia = gerarNomeFantasia(placaMae, processador, placaDeVideo);
+
         // Exibir resultados
         System.out.println("\nEspecificações do modelo vendido:");
+        System.out.println("ID do Computador: " + idComputador);
+        System.out.println("Nome Fantasia: " + nomeFantasia);
         System.out.println("Placa Mãe: " + placaMae);
         System.out.println("Fonte: " + fonte);
         System.out.println("Processador: " + processador);
@@ -135,5 +144,24 @@ public class App {
         System.out.printf("Percentual de Lucro: %.2f%%\n", percentualLucro);
 
         scanner.close();
+
+        // Enviar dados para o "banco de dados"
+        enviarParaBancoDeDados(idComputador, nomeFantasia, totalInvestido, valorVenda, lucroTotal, percentualLucro);
+    }
+
+    // Método para gerar nome fantasia
+    private static String gerarNomeFantasia(String placaMae, String processador, String placaDeVideo) {
+        return "PC-" + placaMae.split(" ")[0] + "-" + processador.split(" ")[0] + "-" + placaDeVideo.split(" ")[0];
+    }
+
+    // Método fictício para enviar dados para um banco de dados
+    private static void enviarParaBancoDeDados(String id, String nomeFantasia, double totalInvestido, double valorVenda, double lucroTotal, double percentualLucro) {
+        System.out.println("\nDados enviados para o banco de dados:");
+        System.out.println("ID: " + id);
+        System.out.println("Nome Fantasia: " + nomeFantasia);
+        System.out.printf("Total Investido: R$ %.2f\n", totalInvestido);
+        System.out.printf("Valor de Venda: R$ %.2f\n", valorVenda);
+        System.out.printf("Lucro Total: R$ %.2f\n", lucroTotal);
+        System.out.printf("Percentual de Lucro: %.2f%%\n", percentualLucro);
     }
 }
