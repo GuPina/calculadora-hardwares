@@ -82,8 +82,18 @@ public class App {
         double totalInvestido = valorPlacaMae + valorFonte + valorProcessador + valorGabinete + valorHd
                 + valorCooler + valorPlacaDeVideo + valorTotalMemoriaRam + valorSsd + valorCustosExtras;
 
+        // Exibir soma dos valores pagos antes do valor de venda
+        System.out.printf("\nA soma dos valores pagos em cada item é: R$ %.2f\n", totalInvestido);
+
+        // Exibir opções de preços com base em percentuais
+        System.out.println("\nSugestões de preços de venda:");
+        for (int i = 10; i <= 100; i += 10) {
+            double sugestaoPreco = totalInvestido + (totalInvestido * i / 100);
+            System.out.printf("%d%% acima do total investido: R$ %.2f\n", i, sugestaoPreco);
+        }
+
         // Solicitar valor de venda
-        System.out.print("Digite o valor de venda: ");
+        System.out.print("\nDigite o valor de venda: ");
         double valorVenda = scanner.nextDouble();
 
         // Calcular lucro total e percentual de lucro
@@ -105,8 +115,8 @@ public class App {
         System.out.println("SSD: " + ssd);
         System.out.println("Custos Extras: " + custosExtras);
 
-        System.out.println("\nTotal Investido: R$ " + totalInvestido);
-        System.out.println("Valor de Venda: R$ " + valorVenda);
+        System.out.printf("\nTotal Investido: R$ %.2f\n", totalInvestido);
+        System.out.printf("Valor de Venda: R$ %.2f\n", valorVenda);
         System.out.printf("Lucro Total: R$ %.2f\n", lucroTotal);
         System.out.printf("Percentual de Lucro: %.2f%%\n", percentualLucro);
 
